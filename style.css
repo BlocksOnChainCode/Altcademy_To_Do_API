@@ -1,0 +1,13 @@
+body {
+  background-color: bisque;
+}
+
+.items-container {
+  width: 100vw;
+}
+.items-container .example-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=style.css.map */
