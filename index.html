@@ -22,19 +22,37 @@
   </header>
 
   <main>
+    <!--All tasks container-->
     <div id="container">
-      <div class="item">
-        <input type="checkbox" id="myCheckbox">
-        <label for="myCheckbox">To do item</label>
-        <button>Delete</button>
+      <div id="new-item-container">
+        <input type="text" id="new-item-input" placeholder="Add a new task...">
+        <button id="add-item-button">Add</button>
       </div>
+
+      <!--
+        <div class="item">
+          <input type="checkbox" id="myCheckbox">
+          <label for="myCheckbox">To do item</label>
+          <button>Delete</button>
+        </div>
+      -->
     </div>
 
-    <div id="new-item-container">
-      <input type="text" id="new-item-input" placeholder="Add a new task...">
-      <button id="add-item-button">Add</button>
+
+    <div id="active-tasks-container">
+
     </div>
 
+
+    <div id="completed-tasks-container">
+
+    </div>
+
+    <div id="navigation">
+      <button>All</button>
+      <button>Active</button>
+      <button>Completed</button>
+    </div>
     <script src="./main.js"></script>
   </main>
 </body>

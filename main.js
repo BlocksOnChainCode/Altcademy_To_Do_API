@@ -36,7 +36,7 @@ $(document).ready(function() {
           <div class="item">
             <input type="checkbox" id="myCheckbox${i}">
             <label for="myCheckbox${i}">${task.content}</label>
-            <button>Delete</button>
+            <button class="delete-button" data-task-id="${task.id}">Delete</button>
           </div>
         `;
         $('#container').append(itemHtml);
@@ -46,4 +46,26 @@ $(document).ready(function() {
       console.log(errorMessage);
     }
   });
+
+
+  $(document).on('click', '.delete-button', function() {
+    var taskId = $(this).data('task-id');
+    var deleteUrl = `https://fewd-todolist-api.onrender.com/tasks/${taskId}?api_key=112`;
+    var $item = $(this).closest('.item');
+
+    $.ajax({
+      type: 'DELETE',
+      url: deleteUrl,
+      success: function (response, textStatus) {
+        console.log(response);
+        $item.remove();
+      },
+      error: function (request, textStatus, errorMessage) {
+        console.log(errorMessage);
+      }
+    });
+  });
+
+
+
 });
