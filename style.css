@@ -1,13 +1,22 @@
 body {
-  background-color: bisque;
+  background-color: rgb(212, 124, 17);
 }
 
-.items-container {
-  width: 100vw;
-}
-.items-container .example-item {
+header {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+main .item {
+  display: flex;
+  justify-content: space-between;
+}
+main .item button {
+  color: red;
 }/*# sourceMappingURL=style.css.map */

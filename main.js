@@ -33,13 +33,13 @@ $(document).ready(function() {
         // create a new item for each task and add it to the list
         var task = response.tasks[i];
         var itemHtml = `
-          <div class="example-item">
+          <div class="item">
             <input type="checkbox" id="myCheckbox${i}">
             <label for="myCheckbox${i}">${task.content}</label>
             <button>Delete</button>
           </div>
         `;
-        $('#items-container').append(itemHtml);
+        $('#container').append(itemHtml);
       }
     },
     error: function (request, textStatus, errorMessage) {
