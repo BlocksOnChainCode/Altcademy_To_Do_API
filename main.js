@@ -2,7 +2,6 @@
 $(document).ready(function() {
   
   $('#completed-tasks-container').hide();
-  // add item button event listener
   $('#add-item-button').click(function() {
     var newItem = $('#new-item-input').val();
 
@@ -47,7 +46,6 @@ $(document).ready(function() {
     });
   });
   
-  // checkbox change event listener
   $(document).on('change', ':checkbox', function() {
     var itemId = $(this).parent().data('id');
     var completed = $(this).prop('checked');
@@ -71,16 +69,13 @@ $(document).ready(function() {
   });
   
   function switchContainers(container) {
-    // hide all containers
     $('#all-tasks-container').hide();
     $('#completed-tasks-container').hide();
     
-    // show the selected container
     $('#' + container + '-tasks-container').show();
   }
   
   $(document).ready(function() {
-    // switch container when button is clicked
     $('#navigation button').click(function() {
       var container = $(this).text().toLowerCase();
       switchContainers(container);
@@ -95,16 +90,15 @@ function fetchTasks() {
     dataType: 'json',
     success: function (response, textStatus) {
       console.log(response);
-      // response is a parsed JavaScript object instead of raw JSON
       $('#all-tasks-container').empty();
-      $('#completed-tasks-container').empty(); // clear both containers
+      $('#completed-tasks-container').empty(); 
       for (var i = 0; i < response.tasks.length; i++) {
-        // create a new item for each task and add it to the list
         var task = response.tasks[i];
         var itemHtml = `
           <div class="item ${task.completed ? 'completed' : 'active'}" data-id="${task.id}">
+            <div class="badge ${task.completed ? 'red' : 'green'}">${task.completed ? "Completed Tasks" : "All Tasks"}</div>
             <input type="checkbox" id="myCheckbox${i}" ${task.completed ? 'checked' : ''} ${task.completed ? 'disabled' : ''}>
-            <label for="myCheckbox${i}">${task.content}</label>
+            <label class="task" for="myCheckbox${i}">${task.content}</label>
             ${task.completed ? '<button class="delete-button" data-task-id="' + task.id + '">Delete</button>' : '<button class="start-button" data-task-id="' + task.id + '">Start</button>'}
           </div>
         `;
@@ -128,4 +122,8 @@ $(document).on('click', '.start-button', function() {
   $item.css('background-color', '#ffd4d4');
 });
 
-
+document.addEventListener("keydown", function(event) {
+  if (event.code === "Enter") {
+    $("#add-item-button").click();
+  }
+});

@@ -1,27 +1,180 @@
 body {
-  background-color: rgb(212, 187, 158);
+  background-color: #ecf0f1;
+  margin: 0;
 }
 
 header {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 160px;
+  background-color: #2c3e50;
+  color: white;
+  margin: 0 0 2rem 0;
+}
+header #new-item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+header #new-item-container input[type=text] {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-right: 10px;
+}
+header #new-item-container #add-item-button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+header #new-item-container #add-item-button:hover {
+  background-color: #1e8449;
+}
+header #new-item-container #add-item-button:active {
+  transform: scale(0.95);
+}
+header h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+header h1 i {
+  font-size: 48px;
+  margin-right: 10px;
 }
 
 main {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 main #all-tasks-container {
-  border: 2px solid orange;
-  display: flex;
-  flex-direction: column;
+  border: 2px solid #27ae60;
+  border-radius: 10px;
+  width: 400px;
+  background-color: #fff;
+  position: relative;
+}
+main #all-tasks-container .badge {
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+main #all-tasks-container .green {
+  background-color: green;
 }
 main #all-tasks-container .item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+main #all-tasks-container .item .task {
+  font-size: 18px;
+  font-weight: bold;
 }
 main #all-tasks-container .item .start-button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
   margin-left: auto;
+}
+main #all-tasks-container .item .start-button:hover {
+  background-color: #1e8449;
+}
+main #all-tasks-container .item .start-button:active {
+  transform: scale(0.95);
+}
+main #completed-tasks-container {
+  border: 2px solid #e74c3c;
+  border-radius: 10px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  position: relative;
+}
+main #completed-tasks-container .badge {
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+main #completed-tasks-container .red {
+  background-color: red;
+}
+main #completed-tasks-container .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+main #completed-tasks-container .item .task {
+  flex: 1;
+  margin-right: 10px;
+  text-decoration: line-through;
+}
+main #completed-tasks-container .item .delete-button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background-color: #e74c3c;
+  margin-left: auto;
+}
+main #completed-tasks-container .item .delete-button:hover {
+  background-color: #1e8449;
+}
+main #completed-tasks-container .item .delete-button:active {
+  transform: scale(0.95);
+}
+main #navigation {
+  margin-top: 20px;
+}
+main #navigation button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-right: 10px;
+}
+main #navigation button:hover {
+  background-color: #1e8449;
+}
+main #navigation button:active {
+  transform: scale(0.95);
+}
+main #navigation button.active {
+  background-color: #1e8449;
 }/*# sourceMappingURL=style.css.map */

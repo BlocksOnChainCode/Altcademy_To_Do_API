@@ -1,30 +1,185 @@
+$primary-color: #2c3e50;
+$secondary-color: #27ae60;
+$delete-color: #e74c3c;
+$background-color: #ecf0f1;
+$container-background-color: #fff;
+
+// Mixin to create a center flexbox container
+@mixin center-flexbox() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Mixin to create a border with rounded corners
+@mixin border-rounded($width, $color, $radius) {
+  border: $width solid $color;
+  border-radius: $radius;
+}
+
+// Mixin to create a button with rounded corners
+@mixin button-rounded() {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: $secondary-color;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
 body {
-  background-color: rgb(212, 187, 158);
+  background-color: $background-color;
+  margin: 0;
 }
 
 header {
-  display: flex;
-  justify-content: center;
-}
+  @include center-flexbox();
+  flex-direction: column;
+  height: 160px;
+  background-color: $primary-color;
+  color: white;
+  margin: 0 0 2rem 0;
+  #new-item-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-right: 10px;
+    }
+  
+    #add-item-button {
+      @include button-rounded();
+    }
+  }
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
 
+    i {
+      font-size: 48px;
+      margin-right: 10px;
+    }
+  }
+}
 
 main {
-  display: flex;
+  @include center-flexbox();
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
-      #all-tasks-container {
-        border: 2px solid orange;
-        display: flex;
-        flex-direction: column;
-            .item {
-              display: flex;
-              justify-content: space-between;
-                .start-button {
-                  margin-left: auto;
-                }
-            }  
+
+  #all-tasks-container {
+    @include border-rounded(2px, $secondary-color, 10px);
+    width: 400px;
+    background-color: $container-background-color;
+    position: relative;
+
+    .badge {
+      position: absolute; 
+      top: -20px; 
+      left: -10px; 
+      padding: 5px 10px;
+      border-radius: 20px;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  
+    .green {
+      background-color: green;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+
+      .task {
+        font-size: 18px;
+        font-weight: bold;
       }
 
+      .start-button {
+        @include button-rounded();
+        margin-left: auto;
+      }
+    }
+  }
+
+  #completed-tasks-container {
+    @include border-rounded(2px, $delete-color, 10px);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: $container-background-color;
+    position: relative; // make the container a positioning context for the badge
+  
+    .badge {
+      position: absolute; // make the badge fixed to the viewport
+      top: -20px; //
+      left: -10px; 
+      padding: 5px 10px;
+      border-radius: 20px;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  
+    .red {
+      background-color: red;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+
+      .task {
+        flex: 1;
+        margin-right: 10px;
+        text-decoration: line-through;
+      }
+
+      .delete-button {
+        @include button-rounded();
+        background-color: $delete-color;
+        margin-left: auto;
+      }
+    }
+  }
+
+  #navigation {
+    margin-top: 20px;
+
+    button {
+      @include button-rounded();
+      margin-right: 10px;
+
+      &.active {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+  }
 }
+
+
