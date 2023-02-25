@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(212, 124, 17);
+  background-color: rgb(212, 187, 158);
 }
 
 header {
@@ -13,10 +13,15 @@ main {
   justify-content: center;
   align-items: center;
 }
-main .item {
+main #all-tasks-container {
+  border: 2px solid orange;
+  display: flex;
+  flex-direction: column;
+}
+main #all-tasks-container .item {
   display: flex;
   justify-content: space-between;
 }
-main .item button {
-  color: red;
+main #all-tasks-container .item .start-button {
+  margin-left: auto;
 }/*# sourceMappingURL=style.css.map */

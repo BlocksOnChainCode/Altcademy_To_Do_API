@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
-
+  
+  $('#completed-tasks-container').hide();
   // add item button event listener
   $('#add-item-button').click(function() {
     var newItem = $('#new-item-input').val();
@@ -46,8 +47,6 @@ $(document).ready(function() {
     });
   });
   
-  
-  
   // checkbox change event listener
   $(document).on('change', ':checkbox', function() {
     var itemId = $(this).parent().data('id');
@@ -71,8 +70,6 @@ $(document).ready(function() {
     });
   });
   
-  
-  
   function switchContainers(container) {
     // hide all containers
     $('#all-tasks-container').hide();
@@ -81,8 +78,6 @@ $(document).ready(function() {
     // show the selected container
     $('#' + container + '-tasks-container').show();
   }
-  
-  
   
   $(document).ready(function() {
     // switch container when button is clicked
@@ -107,10 +102,10 @@ function fetchTasks() {
         // create a new item for each task and add it to the list
         var task = response.tasks[i];
         var itemHtml = `
-          <div class="item" data-id="${task.id}">
-            <input type="checkbox" id="myCheckbox${i}" ${task.completed ? 'checked' : ''}>
+          <div class="item ${task.completed ? 'completed' : 'active'}" data-id="${task.id}">
+            <input type="checkbox" id="myCheckbox${i}" ${task.completed ? 'checked' : ''} ${task.completed ? 'disabled' : ''}>
             <label for="myCheckbox${i}">${task.content}</label>
-            <button class="delete-button" data-task-id="${task.id}">Delete</button>
+            ${task.completed ? '<button class="delete-button" data-task-id="' + task.id + '">Delete</button>' : '<button class="start-button" data-task-id="' + task.id + '">Start</button>'}
           </div>
         `;
         if (task.completed) {
@@ -119,11 +114,18 @@ function fetchTasks() {
           $('#all-tasks-container').append(itemHtml);
         }
       }
+      switchContainers($('#navigation button.active').text().toLowerCase()); // call switchContainers with the currently active navigation button
     },
     error: function (request, textStatus, errorMessage) {
       console.log(errorMessage);
     }
   });
 }
+
+$(document).on('click', '.start-button', function() {
+  var taskId = $(this).data('task-id');
+  var $item = $(this).closest('.item');
+  $item.css('background-color', '#ffd4d4');
+});
 
 

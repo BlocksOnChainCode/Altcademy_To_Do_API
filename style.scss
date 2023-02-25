@@ -1,15 +1,30 @@
 body {
-  background-color: bisque;
+  background-color: rgb(212, 187, 158);
 }
 
-.items-container {
-  width: 100vw;
- 
+header {
+  display: flex;
+  justify-content: center;
+}
 
-      .example-item {
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+      #all-tasks-container {
+        border: 2px solid orange;
         display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+            .item {
+              display: flex;
+              justify-content: space-between;
+                .start-button {
+                  margin-left: auto;
+                }
+            }  
       }
+
 }
